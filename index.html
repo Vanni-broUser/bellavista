@@ -30,7 +30,7 @@
                     <li class="nav-item"><a class="nav-link" href="storia.html">Storia&nbsp;</a></li>
                     <li class="nav-item"><a class="nav-link" href="servizi.html">Servizi&nbsp;</a></li>
                     <li class="nav-item"><a class="nav-link" href="obiettivi.html">Obiettivi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contattaci.html">Contattaci</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contattaci.php">Contattaci</a></li>
                 </ul>
             </div>
         </div>
@@ -38,47 +38,197 @@
     <div id="promo">
         <div class="jumbotron">
             <h1>Segui il Truck-Food PIZZA BELLAVISTA!</h1>
-            <!--
-          	nel php
-            //$map->renderJS();
-            -->
-            <div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
-		<div class="carousel-inner">
-		    <div class="carousel-item active">
-		        
-		        <video controls class="w-100 d-block" src="assets/img/video4.mp4" alt="Slide Image"></video>
-		    </div>
-		    <div class="carousel-item"><video controls class="w-100 d-block" src="assets/img/video2.mp4" alt="Slide Image"></video></div>
-		    <div class="carousel-item"><video controls class="w-100 d-block" src="assets/img/video3.mp4" alt="Slide Image"></video></div>
-		    <div class="carousel-item"><video controls class="w-100 d-block" src="assets/img/video1.mp4" alt="Slide Image"></video></div>
-		</div>
-		<div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
-		<ol class="carousel-indicators">
-		    <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
-		    <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
-		    <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
-		    <li data-bs-target="#carousel-1" data-bs-slide-to="3"></li>
+            <style>
+                body {
+                  font-family: Arial;
+                  margin: 0;
+                }
+                
+                * {
+                  box-sizing: border-box;
+                }
+                
+                img {
+                  vertical-align: middle;
+                }
+                
+                /* Position the image container (needed to position the left and right arrows) */
+                .container {
+                  position: relative;
+                }
+                
+                /* Hide the images by default */
+                .mySlides {
+                  display: none;
+                }
+                
+                /* Add a pointer when hovering over the thumbnail images */
+                .cursor {
+                  cursor: pointer;
+                }
+                
+                /* Next & previous buttons */
+                .prev,
+                .next {
+                  cursor: pointer;
+                  position: absolute;
+                  top: 40%;
+                  width: auto;
+                  padding: 16px;
+                  margin-top: -50px;
+                  color: white;
+                  font-weight: bold;
+                  font-size: 20px;
+                  border-radius: 0 3px 3px 0;
+                  user-select: none;
+                  -webkit-user-select: none;
+                }
 
-		</ol>
-	    </div>
+                .prev {
+                  left: 0;
+                }
+                
+                /* Position the "next button" to the right */
+                .next {
+                  right: 0;
+                  border-radius: 3px 0 0 3px;
+                }
+                
+                /* On hover, add a black background color with a little bit see-through */
+                .prev:hover,
+                .next:hover {
+                  background-color: rgba(0, 0, 0, 0.8);
+                }
+                
+                /* Number text (1/3 etc) */
+                .numbertext {
+                  color: #f2f2f2;
+                  font-size: 12px;
+                  padding: 8px 12px;
+                  position: absolute;
+                  top: 0;
+                }
+                
+                /* Container for image text */
+                .caption-container {
+                  text-align: center;
+                  background-color: #222;
+                  padding: 2px 16px;
+                  color: white;
+                }
+                
+                .row:after {
+                  content: "";
+                  display: table;
+                  clear: both;
+                }
+                
+                /* Six columns side by side */
+                .column {
+                  float: left;
+                  width: 25%;
+                }
+                
+                /* Add a transparency effect for thumnbail images */
+                .demo {
+                  opacity: 0.6;
+                  height: 160px;
+                  width: 100%;
+                }
+                
+                .active,
+                .demo:hover {
+                  opacity: 1;
+                }
+                </style>
+                <div class="container">
+                  <div class="mySlides">
+                    <div class="numbertext">1 / 4</div>
+                    <video controls src="assets/img/video1.mp4" style="width:100%">
+                  </div>
+                
+                  <div class="mySlides">
+                    <div class="numbertext">2 / 4</div>
+                    <video controls src="assets/img/video2.mp4" style="width:100%">
+                  </div>
+                
+                  <div class="mySlides">
+                    <div class="numbertext">3 / 4</div>
+                    <video controls src="assets/img/video3.mp4" style="width:100%">
+                  </div>
+                    
+                  <div class="mySlides">
+                    <div class="numbertext">4 / 4</div>
+                    <video controls src="assets/img/video4.mp4" style="width:100%">
+                  </div>
+                  
+                  <a class="prev" onclick="plusSlides(-1)">❮</a>
+                  <a class="next" onclick="plusSlides(1)">❯</a>
+                
+                  <div class="row">
+                    <div class="column">
+                      <video class="demo cursor" src="assets/img/video1.mp4" id="1" onclick="currentSlide(1)" alt="The Woods">
+                    </div>
+                    <div class="column">
+                      <video class="demo cursor" src="assets/img/video2.mp4" id="2" onclick="currentSlide(2)" alt="Cinque Terre">
+                    </div>
+                    <div class="column">
+                      <video class="demo cursor" src="assets/img/video3.mp4" id="3" onclick="currentSlide(3)" alt="Mountains and fjords">
+                    </div>
+                    <div class="column">
+                      <video class="demo cursor" src="assets/img/video4.mp4" id="4" onclick="currentSlide(4)" alt="Northern Lights">
+                    </div>
+                  </div>
+                </div>
+                
+                <script>
+                let slideIndex = 1;
+                showSlides(slideIndex);
+                
+                function plusSlides(n) {
+                  document.getElementById(slideIndex).pause();
+                  showSlides(slideIndex += n);
+                }
+                
+                function currentSlide(n) {
+                  document.getElementById(slideIndex).pause();
+                  showSlides(slideIndex = n);
+                }
+                
+                function showSlides(n) {
+                  let i;
+                  let slides = document.getElementsByClassName("mySlides");
+                  let dots = document.getElementsByClassName("demo");
+                  if (n > slides.length) {slideIndex = 1}
+                  if (n < 1) {slideIndex = slides.length}
+                  for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                  }
+                  for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                  }
+                  slides[slideIndex-1].style.display = "block";
+                  dots[slideIndex-1].className += " active";
+                }
+                </script>           
         </div>
     </div>
     <div class="container site-section" id="welcome">
         <h1>Benvenuti in Bellavista!</h1>
-        <p style="color: rgb(102, 102, 102);">LA SOSTENIBILE LEGGEREZZA DELLA PIZZA.<br><br>Buone, sane di Qualità ma soprattutto digeribili.<br>Le nostre pizze, preparate secondo la tradizione, partendo dalle origini, cioè da quel processo "magico" che trasforma la farina in pasta morbida e croccante e che vede come protagonista assoluto il nostro "Lievito Madre Vivo" rigorosamente 100% Naturale.<br>Il nostro "Lievito Madre Vivo" nasce dalla sapienza e l'esperienza tramandataci da quattro generazioni di panettieri campani, e soprattutto dalla fermentazione di due mele verdi e una gialla, è un elemento "vivo e naturale" prezioso e delicato. Per permettere al Lievito di compiere al meglio la sua funzione "trasformativa" è necessario rispettare una lievitazione naturale di 48 ore, ed una maturazione successiva di 24 ore in refrigerazione a temperatura ed umidità controllata, solo così otteniamo impasti leggerissimi, pizze sane, genuine e assolutamente digeribili, che vi rimarranno nel cuore, e non sullo stomaco.<br><br>Scegli BELLAVISTA e segui l'ECCELLENZA!</p>
+        <p style="color: rgb(102, 102, 102);">LA SOSTENIBILE LEGGEREZZA DELLA PIZZA.<br><br>Buone, sane di Qualità ma soprattutto digeribili.<br>Le nostre pizze, preparate secondo la tradizione, partendo dalle origini, cioè da quel processo "magico" che trasforma la farina in pasta morbida e croccante e che vede come protagonista assoluto il nostro "Lievito Madre Vivo" rigorosamente 100% Naturale.<br>Il nostro "Lievito Madre Vivo" nasce dalla fermentazione di due mele verdi e una gialla, è un elemento "vivo e naturale" prezioso e delicato. Per permettere al Lievito di compiere al meglio la sua funzione "trasformativa" è necessario rispettare una lievitazione naturale di 48 ore, ed una maturazione successiva di 24 ore in refrigerazione a temperatura ed umidità controllata, solo così otteniamo impasti leggerissimi, pizze sane, genuine e assolutamente digeribili, che vi rimarranno nel cuore, e non sullo stomaco.<br><br>Scegli BELLAVISTA e segui l'ECCELLENZA!</p>
     </div>
     <div class="dark-section" style="background: rgba(0,0,0,0.7);border-color: rgb(51, 51, 51);border-top-color: rgb(51,;border-right-color: 51,;border-bottom-color: 51);border-left-color: 51,;padding: 0px;padding-top: 1%;">
         <div class="container site-section" id="why">
             <h1 style="color: rgb(255,255,255);"><strong>Perchè Sceglierci</strong></h1>
             <div class="row">
                 <div class="col-md-4 item"><i class="fa fa-truck" style="color: rgb(255,255,255);"></i>
-                    <h2 style="color: rgb(255,255,255);"><strong>TruckFood Pizza</strong></h2><a href="http://bellavistatest.altervista.org/servizi.html#opt1"><button class="btn btn-primary" type="button" style="color: var(--white);background: var(--purple);border-color: var(--indigo);">Scopri di più</button></a>
+                    <h2 style="color: rgb(255,255,255);"><strong>TruckFood Pizza</strong></h2><a href="servizi.html#opt1"><button class="btn btn-primary" type="button" style="color: var(--white);background: var(--purple);border-color: var(--indigo);">Scopri di più</button></a>
                 </div>
                 <div class="col-md-4 item"><i class="fa fa-shopping-basket" style="color: rgb(255,255,255);"></i>
-                    <h2 style="color: rgb(255,255,255);"><strong>Fast Delivery</strong></h2><a href="http://bellavistatest.altervista.org/servizi.html#opt2"><button class="btn btn-primary" type="button" style="background: var(--purple);border-color: var(--indigo);">Scopri di più</button></a>
+                    <h2 style="color: rgb(255,255,255);"><strong>Fast Delivery</strong></h2><a href="servizi.html#opt2"><button class="btn btn-primary" type="button" style="background: var(--purple);border-color: var(--indigo);">Scopri di più</button></a>
                 </div>
                 <div class="col-md-4 item"><i class="fa fa-star" style="color: rgb(255,255,255);"></i>
-                    <h2 style="color: rgb(255,255,255);"><strong>Organizzazione Eventi</strong></h2><a href="http://bellavistatest.altervista.org/servizi.html#opt3"><button class="btn btn-primary" type="button" style="background: var(--purple);border-color: var(--indigo);">Scopri di più</button></a>
+                    <h2 style="color: rgb(255,255,255);"><strong>Organizzazione Eventi</strong></h2><a href="servizi.html#opt3"><button class="btn btn-primary" type="button" style="background: var(--purple);border-color: var(--indigo);">Scopri di più</button></a>
                 </div>
             </div>
         </div>
@@ -119,20 +269,23 @@
             </div>
         </div>
     </div>
-    <footer style="font-family: Adamina, serif;">
+    <footer style="font-family: Times New Roman, Times, serif">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-4 footer-navigation">
-                    <h3><a href="#">Bellavista Pizzeria</a></h3>
-                    <p class="links"><a href="home.html">Home&nbsp;</a><strong> · </strong><a href="storia.html">Storia&nbsp;</a><strong> · </strong><a href="servizi.html">Servizi&nbsp;</a><strong> · </strong><a href="obiettivi.html">Obiettivi</a><strong>&nbsp;·&nbsp;</strong><a href="contattaci.html">Contattaci</a><br><strong> </strong></p>
+                    <h3 style="font-family: Times New Roman, Times, serif"><a href="#">Bellavista Pizzeria</a></h3>
+                    <p class="links"><a href="index.html">Home&nbsp;</a><strong> · </strong><a href="storia.html">Storia&nbsp;</a><strong> · </strong><a href="servizi.html">Servizi&nbsp;</a><strong> · </strong><a href="obiettivi.html">Obiettivi</a><strong>&nbsp;·&nbsp;</strong><a href="contattaci.php">Contattaci</a><br><strong> </strong></p>
                     <p class="company-name">Bellavista Pizzeria © 2021<br>p. IVA 07963100727</p>
                 </div>
                 <div class="col-sm-6 col-md-4 footer-contacts">
                     <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                        <p><span class="new-line-span">Via Alessandro Volta 49</span> Italia, Molfetta</p>
+                        <p><span class="new-line-span">Via Alessandro Volta 49</span>Italia, Molfetta</p>
                     </div>
                     <div><i class="fa fa-phone footer-contacts-icon"></i>
-                        <p class="footer-center-info email text-left">+39 389 206 0125<br></p>
+                        <p class="footer-center-info email text-left">Consulenza Truck-Food<br>+39 389 206 0125</p>
+                    </div>
+                    <div><i class="fa fa-phone footer-contacts-icon"></i>
+                        <p class="footer-center-info email text-left">Servizio d'asporto e ordini a domicilio<br>+39 080 809 0193</p>
                     </div>
                     <div><i class="fa fa-envelope footer-contacts-icon"></i>
                         <p> <a href="mailto:bellavista.pizzeriefranchising@gmail.com" target="_blank" style="font-size: 14px;">bellavista.pizzeriefranchising@gmail.com</a></p>

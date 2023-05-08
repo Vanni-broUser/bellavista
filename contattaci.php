@@ -29,17 +29,36 @@
                     <li class="nav-item"><a class="nav-link" href="storia.html">Storia&nbsp;</a></li>
                     <li class="nav-item"><a class="nav-link" href="servizi.html">Servizi&nbsp;</a></li>
                     <li class="nav-item"><a class="nav-link" href="obiettivi.html">Obiettivi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contattaci.html">Contattaci</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contattaci.php">Contattaci</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <section class="contact-clean">
-        <form data-bss-recipient="96f04f03ac5f74de116576ca4c1c358a">
+        <form method="POST" action="#">
             <h2 class="text-center">Contattaci</h2>
             <div class="form-group"><input class="form-control" type="text" name="Nome" placeholder="Nome" required=""></div>
             <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" required=""></div>
             <div class="form-group"><textarea class="form-control" name="Messaggio" placeholder="Messaggio" rows="14" minlength="10"></textarea></div>
+            <?php
+                if($_POST) {
+                    $nome = $_POST['Nome'];
+                    $email = $_POST['email'];
+                    $messaggio = $_POST['Messaggio'];
+                    $to = "bellavista.pizzeriefranchising@gmail.com";
+                    $subject = "Nuovo messaggio dal form di contatto del sito web";
+                    $headers = "From: $email\r\nReply-To: $email\r\n";
+                    $body = "Hai ricevuto un nuovo messaggio dal form di contatto del sito web:\n\n";
+                    $body .= "Nome: " . $nome . "\n";
+                    $body .= "Email: " . $email . "\n";
+                    $body .= "Messaggio: " . $messaggio . "\n";
+                    if(mail($to, $subject, $body, $headers)) {
+                        echo "Grazie per averci contattato!";
+                    } else {
+                        echo "Si è verificato un errore nell'invio del messaggio. Riprova più tardi.";
+                    }
+                }
+            ?>
             <div class="form-group"><button class="btn btn-primary" type="submit">INVIA<br></button></div>
             <div class="form-row">
                 <div class="col-12">
@@ -67,12 +86,12 @@
             </div>
         </form>
     </section>
-    <footer style="font-family: Adamina, serif;">
+    <footer style="font-family: Times New Roman, Times, serif">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-4 footer-navigation">
-                    <h3><a href="#">Bellavista Pizzeria</a></h3>
-                    <p class="links"><a href="home.html">Home&nbsp;</a><strong> · </strong><a href="storia.html">Storia&nbsp;</a><strong> · </strong><a href="servizi.html">Servizi&nbsp;</a><strong> · </strong><a href="obiettivi.html">Obiettivi</a><strong>&nbsp;·&nbsp;</strong><a href="contattaci.html">Contattaci</a><br><strong> </strong></p>
+                    <h3 style="font-family: Times New Roman, Times, serif"><a href="#">Bellavista Pizzeria</a></h3>
+                    <p class="links"><a href="index.html">Home&nbsp;</a><strong> · </strong><a href="storia.html">Storia&nbsp;</a><strong> · </strong><a href="servizi.html">Servizi&nbsp;</a><strong> · </strong><a href="obiettivi.html">Obiettivi</a><strong>&nbsp;·&nbsp;</strong><a href="contattaci.php">Contattaci</a><br><strong> </strong></p>
                     <p class="company-name">Bellavista Pizzeria © 2021<br>p. IVA 07963100727</p>
                 </div>
                 <div class="col-sm-6 col-md-4 footer-contacts">
@@ -81,6 +100,9 @@
                     </div>
                     <div><i class="fa fa-phone footer-contacts-icon"></i>
                         <p class="footer-center-info email text-left">+39 389 206 0125<br></p>
+                    </div>
+                    <div><i class="fa fa-phone footer-contacts-icon"></i>
+                        <p class="footer-center-info email text-left">Servizio d'asporto e ordini a domicilio<br>+39 080 809 0193</p>
                     </div>
                     <div><i class="fa fa-envelope footer-contacts-icon"></i>
                         <p> <a href="mailto:bellavista.pizzeriefranchising@gmail.com" target="_blank" style="font-size: 14px;">bellavista.pizzeriefranchising@gmail.com</a></p>
